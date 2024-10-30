@@ -5,12 +5,10 @@ from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 
 from routes import main_bp
-
 from config import Config
 from models import db, User, Contact
 
 migrate = Migrate()
-
 
 def create_app():
     app = Flask(__name__)
@@ -24,8 +22,9 @@ def create_app():
 
     return app
 
+# Create the app instance
+app = create_app()
 
 if __name__ == "__main__":
-    app = create_app()
     port = int(os.environ.get("PORT", 5001))
     app.run(host="0.0.0.0", port=port, debug=True)
